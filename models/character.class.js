@@ -3,7 +3,7 @@ class Character extends MovableObject {
     width = (this.height * (815/1000));
     x = 0;
     y = 50;
-    speed = 15;
+    speed = 1;
     IMAGES_IDLE = [
         'img/1.Sharkie/1.IDLE/1.png',
         'img/1.Sharkie/1.IDLE/2.png',
@@ -62,7 +62,6 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGES_SWIM);
 
         this.animate();
-        this.move();
     }
 
     animate() {
@@ -75,8 +74,7 @@ class Character extends MovableObject {
                 this.currentImage++;
             }
         }, 120);
-    }
-    move(){
+
         setInterval(() => {
             if (keyboard.RIGHT) {
                 this.x += this.speed;
@@ -90,6 +88,6 @@ class Character extends MovableObject {
             if (keyboard.DOWN) {
                 this.y += this.speed;
             }
-        }, 100);
+        }, 1000 / 120);
     }
 }
