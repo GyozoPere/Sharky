@@ -1,14 +1,19 @@
-let Canvas;
-let Width = 720;
-let Height = 480;
+let canvas;
+let cWidth = 720;
+let cHeight = 480;
 let world;
+let keyboard = new Keyboard();
 
 function init() {
-    Canvas = document.getElementById('canvas');
-    Canvas.width = Width;
-    Canvas.height = Height;
-    world = new World(Canvas);
+    canvas = document.getElementById('canvas');
+    canvas.width = cWidth;
+    canvas.height = cHeight;
+    world = new World(canvas);
 
     console.log('my Character is', world.character);
     console.log('enemies', world.enemis);
 }
+
+window.addEventListener("keypressf", (event) => {
+    console.log(event);
+});
