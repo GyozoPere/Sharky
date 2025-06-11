@@ -60,7 +60,6 @@ class Character extends MovableObject {
     constructor() {
         super().loadImage('img/1.Sharkie/3.Swim/1.png');
         this.loadImages(this.IMAGES_SWIM);
-
         this.animate();
     }
 
@@ -78,9 +77,11 @@ class Character extends MovableObject {
         setInterval(() => {
             if (keyboard.RIGHT) {
                 this.x += this.speed;
+                this.otherDirection = false;
             }
             if (keyboard.LEFT) {
                 this.x -= this.speed;
+                this.otherDirection = true;
             }
             if (keyboard.UP) {
                 this.y -= this.speed;
