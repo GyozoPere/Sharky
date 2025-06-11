@@ -1,6 +1,7 @@
 class MovableObject {
     x = 120;
     y = 250;
+    speed = 0.01;
     img;
     imageChache = {};
     currentImage = 0;
@@ -19,10 +20,15 @@ class MovableObject {
     }
 
     moveRight() {
-        console.log('Moving right');
+        setInterval(() => {
+        this.x += this.speed;
+        }, 1000 / 120);
     }
 
     moveLeft() {
-    
+        setInterval(() => {
+            this.x -= this.speed;
+        }, 1000 / 120);
+        
     }
 }
