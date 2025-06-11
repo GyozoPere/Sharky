@@ -21,7 +21,7 @@ class MovableObject {
 
     moveRight() {
         setInterval(() => {
-        this.x += this.speed;
+            this.x += this.speed;
         }, 1000 / 120);
     }
 
@@ -30,5 +30,17 @@ class MovableObject {
             this.x -= this.speed;
         }, 1000 / 120);
         
+    }
+
+    moveUp() {
+        setInterval(() => {
+            this.y -= this.speed;
+        }, 1000 / 120);
+    }
+
+    moveDown() {
+        setInterval(() => {
+            this.y += this.speed;
+        }, 1000 / 120);
     }
 }
