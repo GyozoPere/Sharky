@@ -2,13 +2,15 @@ class World {
     character = new Character();
     enemis = [
         new PufferFishGreen(),
-        new PufferFishOrange(),
-        new PufferFishRed(),
-        new JellyFishLila(),
-        new JellyFishYellow(),
-        new JellyFishGreen(),
-        new JellyFishPink(),
-        new FinalEnemy(),
+        new PufferFishGreen(),
+        new PufferFishGreen(),
+        //new PufferFishOrange(),
+        //new PufferFishRed(),
+        //new JellyFishLila(),
+        //new JellyFishYellow(),
+        //new JellyFishGreen(),
+        //new JellyFishPink(),
+        //new FinalEnemy(),
     ];
 
     ctx;
