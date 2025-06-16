@@ -1,7 +1,7 @@
 class MovableObject {
     x = 120;
     y = 250;
-    speed = 0.01;
+    speed = 0.05;
     img;
     imageChache = {};
     currentImage = 0;

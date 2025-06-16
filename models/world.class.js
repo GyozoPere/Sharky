@@ -1,8 +1,6 @@
 class World {
     character = new Character();
-    enemis = level1.enemis;
-    light = level1.light;
-    backgroundObjects = level1.backgroundObjects;
+    level = level1;
     canvas;
     ctx;
     camera_x = 0;
@@ -14,17 +12,17 @@ class World {
     }
 
     draw() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); 
         
         this.ctx.translate(this.camera_x, 0);
 
-        this.addObjectsToMap(this.backgroundObjects);
-        this.addObjectsToMap(this.enemis);
+        this.addObjectsToMap(this.level.backgroundObjects);
+        this.addObjectsToMap(this.level.enemis);
         this.addObjectsToMap([this.character]);
 
         this.ctx.translate(-this.camera_x, 0);
 
-        this.addObjectsToMap(this.light);
+        this.addObjectsToMap(this.level.light);
 
         requestAnimationFrame(() => this.draw());
     }

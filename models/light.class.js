@@ -7,6 +7,4 @@ class Light extends MovableObject{
         super().loadImage('img/3. Background/Layers/1. Light/COMPLETO.png');
         this.moveLeft();
     }
-
-    
 }
