@@ -1,26 +1,8 @@
 class World {
     character = new Character();
-    enemis = [
-        new PufferFishGreen(),
-        new PufferFishGreen(),
-        new PufferFishGreen(),
-        //new PufferFishOrange(),
-        //new PufferFishRed(),
-        //new JellyFishLila(),
-        //new JellyFishYellow(),
-        //new JellyFishGreen(),
-        //new JellyFishPink(),
-        //new FinalEnemy(),
-    ];
-    light = [
-        new Light()
-    ];
-    backgroundObjects = [
-        new BackgroundObject('img/3. Background/Layers/5. Water/D1.png', 0, 0),
-        new BackgroundObject('img/3. Background/Layers/4.Fondo 2/L1.png' , 0, 0),
-        new BackgroundObject('img/3. Background/Layers/3.Fondo 1/D1.png', 0, 0),
-        new BackgroundObject('img/3. Background/Layers/2. Floor/D1.png', 0, 0),
-    ];
+    enemis = level1.enemis;
+    light = level1.light;
+    backgroundObjects = level1.backgroundObjects;
     canvas;
     ctx;
     camera_x = 0;
@@ -33,15 +15,16 @@ class World {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-        this.ctx.translate(this.camera_x, 0);
         
+        this.ctx.translate(this.camera_x, 0);
+
         this.addObjectsToMap(this.backgroundObjects);
-        this.addObjectsToMap(this.light);
         this.addObjectsToMap(this.enemis);
         this.addObjectsToMap([this.character]);
 
         this.ctx.translate(-this.camera_x, 0);
+
+        this.addObjectsToMap(this.light);
 
         requestAnimationFrame(() => this.draw());
     }

@@ -92,8 +92,8 @@ class Character extends MovableObject {
             if (this.x >= 500) {
                 world.camera_x = -this.x + 500;
             }
-            if (this.x <= 500 && this.x >= 0) {
-                world.camera_x = Math.min(0, -this.x + 500);
+            if (this.x <= 500) {
+                world.camera_x = -this.x + 500;
             }
         }, 1000 / 120);
     }
