@@ -23,6 +23,7 @@ class World {
     ];
     canvas;
     ctx;
+    camera_x = 0;
 
     constructor(canvas) {
         this.ctx = canvas.getContext('2d');
@@ -32,11 +33,15 @@ class World {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        this.ctx.translate(this.camera_x, 0);
         
         this.addObjectsToMap(this.backgroundObjects);
         this.addObjectsToMap(this.light);
         this.addObjectsToMap(this.enemis);
         this.addObjectsToMap([this.character]);
+
+        this.ctx.translate(-this.camera_x, 0);
 
         requestAnimationFrame(() => this.draw());
     }
