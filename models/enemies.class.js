@@ -2,6 +2,7 @@ class PufferFishGreen extends MovableObject{
     
     height = 50;
     width = (this.height * (241/198));
+    
     IMAGES_SWIM = [
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim2.png',
@@ -23,10 +24,7 @@ class PufferFishGreen extends MovableObject{
     animate() {
         this.moveLeft();
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_SWIM.length;
-            let path = this.IMAGES_SWIM[i];
-            this.img = this.imageChache[path];
-            this.currentImage++;
+        this.playAnimation(this.IMAGES_SWIM);
         }, 100);
     }
 }

@@ -3,6 +3,7 @@ const level1 = new level(
     new PufferFishGreen(),
     new PufferFishGreen(),
     new PufferFishGreen(),
+    new Endboss(),
     //new PufferFishOrange(),
     //new PufferFishRed(),
     //new JellyFishLila(),
