@@ -1,6 +1,19 @@
 class Endboss extends MovableObject {
     height = 350;
     width = (this.height * (1041/1216));
+    offset = {
+        top: 165,
+        bottom: 60,
+        left: 20,
+        right: 20
+    }
+
+    hitBox = {
+        x: (this.x-this.offset.right),
+        y: (this.y-this.offset.bottom),
+        width: (this.width+this.offset.left),
+        height: (this.height+this.offset.top)
+    }
 
     IMAGES_INTRODUCE = [
         'img/2.Enemy/3 Final Enemy/1.Introduce/1.png',

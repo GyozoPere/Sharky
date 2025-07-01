@@ -11,7 +11,7 @@ function init() {
     world = new World(canvas);
 
     console.log('my Character is', world.character);
-    console.log('enemies', world.enemis);
+    console.log('enemies', level.enemis);
 }
 
 window.addEventListener("keydown", (event) => {

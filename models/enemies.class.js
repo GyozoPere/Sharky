@@ -2,6 +2,12 @@ class PufferFishGreen extends MovableObject{
     
     height = 50;
     width = (this.height * (241/198));
+    offset = {
+        top: 5,
+        bottom: 15,
+        left: 5,
+        right: 5
+    }
     
     IMAGES_SWIM = [
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png',

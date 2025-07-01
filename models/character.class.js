@@ -4,6 +4,13 @@ class Character extends MovableObject {
     x = 0;
     y = 50;
     speed = 5;
+    offset = {
+        top: 120,
+        bottom: 65,
+        left: 40,
+        right: 40
+    }
+
     IMAGES_IDLE = [
         'img/1.Sharkie/1.IDLE/1.png',
         'img/1.Sharkie/1.IDLE/2.png',
@@ -22,23 +29,13 @@ class Character extends MovableObject {
         'img/1.Sharkie/1.IDLE/15.png',
         'img/1.Sharkie/1.IDLE/16.png',
         'img/1.Sharkie/1.IDLE/17.png',
-        'img/1.Sharkie/1.IDLE/18.png',
+        'img/1.Sharkie/1.IDLE/18.png'
     ];
     IMAGES_LONG_IDLE = [
-        'img/1.Sharkie/2.Long_IDLE/i1.png',
-        'img/1.Sharkie/2.Long_IDLE/I2.png',
-        'img/1.Sharkie/2.Long_IDLE/I3.png',
-        'img/1.Sharkie/2.Long_IDLE/I4.png',
-        'img/1.Sharkie/2.Long_IDLE/I5.png',
-        'img/1.Sharkie/2.Long_IDLE/I6.png',
-        'img/1.Sharkie/2.Long_IDLE/I7.png',
-        'img/1.Sharkie/2.Long_IDLE/I8.png',
-        'img/1.Sharkie/2.Long_IDLE/I9.png',
-        'img/1.Sharkie/2.Long_IDLE/I10.png',
         'img/1.Sharkie/2.Long_IDLE/I11.png',
         'img/1.Sharkie/2.Long_IDLE/I12.png',
         'img/1.Sharkie/2.Long_IDLE/I13.png',
-        'img/1.Sharkie/2.Long_IDLE/I14.png',
+        'img/1.Sharkie/2.Long_IDLE/I14.png'
     ];
     IMAGES_SWIM = [
         'img/1.Sharkie/3.Swim/1.png',
@@ -46,29 +43,38 @@ class Character extends MovableObject {
         'img/1.Sharkie/3.Swim/3.png',
         'img/1.Sharkie/3.Swim/4.png',
         'img/1.Sharkie/3.Swim/5.png',
-        'img/1.Sharkie/3.Swim/6.png',
+        'img/1.Sharkie/3.Swim/6.png'
     ];
     IMAGES_ATTACK = [
-        'img/1.Sharkie/4.Attack/1.png',
-        'img/1.Sharkie/4.Attack/2.png',
-        'img/1.Sharkie/4.Attack/3.png',
-        'img/1.Sharkie/4.Attack/4.png',
-        'img/1.Sharkie/4.Attack/5.png',
-        'img/1.Sharkie/4.Attack/6.png',
+        'img/1.Sharkie/4.Attack/Fin slap/1.png',
+        'img/1.Sharkie/4.Attack/Fin slap/2.png',
+        'img/1.Sharkie/4.Attack/Fin slap/3.png',
+        'img/1.Sharkie/4.Attack/Fin slap/4.png',
+        'img/1.Sharkie/4.Attack/Fin slap/5.png',
+        'img/1.Sharkie/4.Attack/Fin slap/6.png',
+        'img/1.Sharkie/4.Attack/Fin slap/7.png',
+        'img/1.Sharkie/4.Attack/Fin slap/8.png',
+        'img/1.Sharkie/4.Attack/Fin slap/1.png'
     ];
 
     constructor() {
         super().loadImage('img/1.Sharkie/3.Swim/1.png');
         this.loadImages(this.IMAGES_SWIM);
+        this.loadImages(this.IMAGES_IDLE);
+        this.loadImages(this.IMAGES_LONG_IDLE);
+        this.loadImages(this.IMAGES_ATTACK);
         this.animate();
     }
 
     animate() {
         setInterval(() => {
             if (keyboard.LEFT || keyboard.RIGHT || keyboard.UP || keyboard.DOWN) {
-                this.playAnimation(this.IMAGES_SWIM);
+            this.playAnimation(this.IMAGES_SWIM);
             }
-        }, 120);
+            if (keyboard.SPACE) {
+                this.playAtackAnimation(this.IMAGES_ATTACK);
+            }
+        }, 200);
 
         setInterval(() => {
             if (keyboard.RIGHT && this.x < world.level.level_end_x) {
