@@ -21,7 +21,8 @@ class World {
         setInterval(() => {
             this.level.enemis.forEach((enemy) => {
                 if (this.character.isColliding(enemy)) {
-                    console.log('Collision detected with enemy', enemy);
+                    this.character.health -= enemy.damage;
+                    console.log(this.character.health);
                 }
             });
         }, 1000);
@@ -50,7 +51,6 @@ class World {
             }
             mo.draw(this.ctx);
             mo.drawFrame(this.ctx);
-            mo.drawCollisionBox(this.ctx);
             if (mo.otherDirection) {
                  this.flipImageBack(mo);
             }

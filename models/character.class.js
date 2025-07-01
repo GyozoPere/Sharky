@@ -10,6 +10,8 @@ class Character extends MovableObject {
         left: 40,
         right: 40
     }
+    health = 100;
+    damage = 15;
 
     IMAGES_IDLE = [
         'img/1.Sharkie/1.IDLE/1.png',
