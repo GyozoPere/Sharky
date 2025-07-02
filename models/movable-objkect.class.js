@@ -7,6 +7,9 @@ class MovableObject {
     currentImage = 0;
     otherDirection = false;
     isAttackPlaying = false;
+    deadAnimation = false;
+    hurtCharacter = false;
+    deadCharacter = false;
 
     loadImage(path) {
         this.img = new Image();
@@ -56,11 +59,37 @@ class MovableObject {
             (this.y + this.offset.top) < ((mo.y + mo.height)-mo.offset.bottom);
     }
 
+    hitCharacter(character, enemy) {
+        if (!this.deadAnimation) {               
+            if (character.health > 0) {
+                character.health -= enemy.damage;
+                this.playHurtAnimation(this.IMAGES_HURT);
+            } else {
+                character.health = 0;
+                clearInterval(this.collisionInterval);
+                this.playDeadAnimation(this.IMAGES_DEAD);
+            }
+        }        
+    }
+    
     playAnimation(images) {
         let i = this.currentImage % this.IMAGES_SWIM.length;
         let path = images[i];
         this.img = this.imageChache[path];
         this.currentImage++;
+    }
+
+    playHurtAnimation(images) {
+        if (!this.hurtCharacter) {
+            this.hurtCharacter = true;
+            let i = 0;
+            const interval = setInterval(() => {
+                if (i < images.length) {
+                    this.img = this.imageChache[images[i]];
+                    i++;
+                }
+            }, 1000 / 15);
+        }
     }
     
     playAtackAnimation(images) {
@@ -79,6 +108,20 @@ class MovableObject {
         }
     }
 
+    playDeadAnimation(images) {
+        if (!this.deadAnimation) {
+            this.deadAnimation = true;
+            let i = 0;
+            const interval = setInterval(() => {
+                if (i < images.length) {
+                    this.img = this.imageChache[images[i]];
+                    i++;
+                }
+            }, 1000 / 15);
+        }
+    }
+
+    
     moveRight() {
         setInterval(() => {
             this.x += this.speed;

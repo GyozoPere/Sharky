@@ -18,14 +18,13 @@ class World {
     }
 
     checkCollisions() {
-        setInterval(() => {
+        this.collisionInterval = setInterval(() => {
             this.level.enemis.forEach((enemy) => {
                 if (this.character.isColliding(enemy)) {
-                    this.character.health -= enemy.damage;
-                    console.log(this.character.health);
+                    this.character.hitCharacter(this.character, enemy);
                 }
             });
-        }, 1000);
+        }, 200);
     }
 
     draw() {

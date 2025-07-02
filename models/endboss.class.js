@@ -9,7 +9,7 @@ class Endboss extends MovableObject {
     }
     health = 100;
     damage = 10;
-    
+
     hitBox = {
         x: (this.x-this.offset.right),
         y: (this.y-this.offset.bottom),

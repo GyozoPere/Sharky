@@ -9,7 +9,7 @@ class PufferFishGreen extends MovableObject{
         right: 5
     }
     health = 15;
-    damage = 10;
+    damage = 5;
 
     IMAGES_SWIM = [
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png',
