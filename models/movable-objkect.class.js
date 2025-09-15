@@ -89,6 +89,7 @@ class MovableObject {
                     i++;
                 }
             }, 1000 / 15);
+            this.hurtCharacter = false;
         }
     }
     
