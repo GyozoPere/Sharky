@@ -10,7 +10,8 @@ class Character extends MovableObject {
         left: 40,
         right: 40
     }
-    health = 100;
+    startHealth = 200;
+    health = this.startHealth;
     damage = 15;
 
     IMAGES_IDLE = [

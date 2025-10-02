@@ -4,6 +4,7 @@ class World {
     canvas;
     ctx;
     camera_x = 0;
+    statusBar = new StatusBar();
 
     constructor(canvas) {
         this.ctx = canvas.getContext('2d');
@@ -23,6 +24,7 @@ class World {
                 if (this.character.isColliding(enemy)) {
                     this.character.hitCharacter(this.character, enemy);
                 }
+                this.statusBar.setHealthBarPercentage(this.character.health / this.character.startHealth * 100);
             });
         }, 200);
     }
@@ -35,25 +37,30 @@ class World {
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.enemis);
         this.addObjectsToMap([this.character]);
-
         this.ctx.translate(-this.camera_x, 0);
 
         this.addObjectsToMap(this.level.light);
+        this.addToMap(this.statusBar);
 
         requestAnimationFrame(() => this.draw());
     }
 
     addObjectsToMap(objects) {
         objects.forEach(mo => {
-            if (mo.otherDirection) {
+            this.addToMap(mo);
+        });
+    }
+
+    addToMap(mo) {
+        if (mo.otherDirection) {
                 this.flipImage(mo);
             }
             mo.draw(this.ctx);
             mo.drawFrame(this.ctx);
+            
             if (mo.otherDirection) {
                  this.flipImageBack(mo);
             }
-        });
     }
     
     flipImage(mo) {
