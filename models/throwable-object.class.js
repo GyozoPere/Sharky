@@ -1,9 +1,9 @@
 class ThrowableObject extends MovableObject {
 
-    constructor() {
+    constructor(x, y) {
         super().loadImage('img/1.Sharkie/4.Attack/Bubble trap/Poisoned Bubble (for whale).png'); 
-        this.x = 100;
-        this.y = 100;
+        this.x = x;
+        this.y = y;
         this.offset = {
             top: 3,
             bottom: 3,
@@ -12,15 +12,13 @@ class ThrowableObject extends MovableObject {
         }
         this.height = 50;
         this.width = (this.height * (204/202));
-        this.throw(100,175)
+        this.throw();
     }
 
-    throw(x, y) {
-        this.x = x;
-        this.y = y;
+    throw() {
         setInterval(() => {
             this.x += 10;
-        }, 25);
+        }, 50);
     }
 
     

@@ -78,7 +78,6 @@ class MovableObject extends DrawableObject {
             }, 1000 / 15);
         }
     }
-
     
     moveRight() {
         setInterval(() => {
@@ -104,4 +103,37 @@ class MovableObject extends DrawableObject {
             this.y += this.speed;
         }, 1000 / 120);
     }
+
+    animate() {
+        setInterval(() => {
+            if (keyboard.LEFT || keyboard.RIGHT || keyboard.UP || keyboard.DOWN) {
+            this.playAnimation(this.IMAGES_SWIM);
+            }
+            if (keyboard.SPACE) {
+                this.playAtackAnimation(this.IMAGES_SLAP);
+            }
+            if (keyboard.D) {
+                this.playAtackAnimation(this.IMAGES_ATTACK);
+            }
+        }, 200);
+
+        setInterval(() => {
+            if (keyboard.RIGHT && this.x < world.level.level_end_x) {
+                this.x += this.speed;
+                this.otherDirection = false;
+            }
+            if (keyboard.LEFT && this.x > 0) {
+                this.x -= this.speed;
+                this.otherDirection = true;
+            }
+            if (keyboard.UP && this.y > -100) {
+                this.y -= this.speed;
+            }
+            if (keyboard.DOWN && this.y < 520 - this.height) {
+                this.y += this.speed;
+            }
+            world.camera_x = -this.x + 100;
+        }, 1000 / 120);
+    }
+
 }

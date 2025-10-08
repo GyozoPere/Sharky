@@ -5,7 +5,9 @@ class World {
     ctx;
     camera_x = 0;
     statusBar = new StatusBar();
-    throwableObject = [new ThrowableObject()];
+    throwableObject = [];
+    throw = false;
+    cooldown = 500;
 
     constructor(canvas) {
         this.ctx = canvas.getContext('2d');
@@ -22,8 +24,8 @@ class World {
 
     swim() {
         this.collisionInterval = setInterval(() => {
-            this.checkCollisions(); 
-            this.checkThrowableObjects();
+            this.checkCollisions();
+            this.throwBubble();
         }, 200);
     }
 
@@ -36,13 +38,17 @@ class World {
             });
     }
 
-    checkThrowableObjects() {
-        if(this.keyboard.D) {
+    throwBubble() {
+        if(this.keyboard.D && !this.canThrow){
+            this.throw = true;
             setTimeout(() => {
-            let bubble = new ThrowableObject(this.character.x, this.character.y + this.character.height / 2);
-            this.throwableObject.push(bubble);
+                let bubble = new ThrowableObject(this.character.x + 180, this.character.y + this.character.height / 2);
+                this.throwableObject.push(bubble);
             }, 500);
         }
+        setTimeout(() => {
+            this.canThrow = false;
+        }, this.cooldown);
     }
         
     draw() {
