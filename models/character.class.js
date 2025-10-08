@@ -49,6 +49,16 @@ class Character extends MovableObject {
         'img/1.Sharkie/3.Swim/6.png'
     ];
     IMAGES_ATTACK = [
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/1.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/2.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/3.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/4.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/5.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png',
+    ];
+    IMAGES_SLAP = [
         'img/1.Sharkie/4.Attack/Fin slap/1.png',
         'img/1.Sharkie/4.Attack/Fin slap/2.png',
         'img/1.Sharkie/4.Attack/Fin slap/3.png',
@@ -88,6 +98,7 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_LONG_IDLE);
         this.loadImages(this.IMAGES_ATTACK);
+        this.loadImages(this.IMAGES_SLAP);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
         this.animate();
@@ -99,6 +110,9 @@ class Character extends MovableObject {
             this.playAnimation(this.IMAGES_SWIM);
             }
             if (keyboard.SPACE) {
+                this.playAtackAnimation(this.IMAGES_SLAP);
+            }
+            if (keyboard.D) {
                 this.playAtackAnimation(this.IMAGES_ATTACK);
             }
         }, 200);

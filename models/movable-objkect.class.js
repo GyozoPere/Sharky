@@ -74,7 +74,9 @@ class MovableObject extends DrawableObject {
                     i++;
                 } else {
                     clearInterval(interval);
-                    this.isAttackPlaying = false;
+                    setTimeout(() => {
+                        this.isAttackPlaying = false;
+                    }, 200);
                 }
             }, 1000 / 15);
         }
