@@ -53,5 +53,5 @@ window.addEventListener("keyup", (event) => {
     }
     if (event.key === 'd' || event.key === 'D') { 
         keyboard.D = false;
-    }d
+    }
 });
